@@ -2,7 +2,11 @@ pipeline:
   stages:
     - steps:
         - run:
-            script: cd SmallestSpringApp && mvn -B clean package
+            script: "pwd\r
+
+              ls -la\r
+
+              find / -name pom.xml -type f 2>/dev/null | head -20"
             shell: bash
           name: maven build
           id: maven_build
