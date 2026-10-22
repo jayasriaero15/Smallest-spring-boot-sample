@@ -2,47 +2,7 @@ pipeline:
   stages:
     - steps:
         - run:
-            script: "#!/bin/bash\r
-
-              set -e\r
-
-              \r
-
-              echo \"Current directory:\"\r
-
-              pwd\r
-
-              \r
-
-              echo \"Repository contents:\"\r
-
-              ls -la\r
-
-              \r
-
-              echo \"Application directory:\"\r
-
-              ls -la SmallestSpringApp\r
-
-              \r
-
-              cd SmallestSpringApp\r
-
-              \r
-
-              echo \"Project directory:\"\r
-
-              pwd\r
-
-              \r
-
-              echo \"Checking pom.xml:\"\r
-
-              ls -l pom.xml\r
-
-              \r
-
-              mvn -B clean package"
+            script: pwd; ls -la /harness; find /harness -name pom.xml -type f
             shell: bash
           name: maven build
           id: maven_build
