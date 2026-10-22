@@ -2,12 +2,11 @@ pipeline:
   stages:
     - steps:
         - run:
-            script: "git clone
-              https://github.com/jayasriaero15/Smallest-spring-boot-sample.git\r
+            script: "cd SmallestSpringApp\r
 
-              cd Smallest-spring-boot-sample/SmallestSpringApp\r
+              mvn -B clean package \r
 
-              mvn -B clean package"
+              mvn -B test"
             shell: bash
           name: maven build
           id: maven_build
