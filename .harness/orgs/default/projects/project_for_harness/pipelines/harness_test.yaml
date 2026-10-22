@@ -2,7 +2,7 @@ pipeline:
   stages:
     - steps:
         - run:
-            script: pwd; ls -la /harness; find /harness -name pom.xml -type f
+            script: cd SmallestSpringApp && mvn -B clean package
             shell: bash
           name: maven build
           id: maven_build
