@@ -2,11 +2,47 @@ pipeline:
   stages:
     - steps:
         - run:
-            script: "cd SmallestSpringApp \r
+            script: "#!/bin/bash\r
 
-              mvn -B clean package \r
+              set -e\r
 
-              mvn -B test"
+              \r
+
+              echo \"Current directory:\"\r
+
+              pwd\r
+
+              \r
+
+              echo \"Repository contents:\"\r
+
+              ls -la\r
+
+              \r
+
+              echo \"Application directory:\"\r
+
+              ls -la SmallestSpringApp\r
+
+              \r
+
+              cd SmallestSpringApp\r
+
+              \r
+
+              echo \"Project directory:\"\r
+
+              pwd\r
+
+              \r
+
+              echo \"Checking pom.xml:\"\r
+
+              ls -l pom.xml\r
+
+              \r
+
+              mvn -B clean package"
             shell: bash
           name: maven build
           id: maven_build
