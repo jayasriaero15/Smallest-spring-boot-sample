@@ -1,0 +1,19 @@
+pipeline:
+  stages:
+    - steps:
+        - run:
+            script: "# Navigate to project directory\r
+
+              Set-Location
+              \"Smallest-spring-boot-sample-master/SmallestSpringApp\"\r
+
+              \r
+
+              # Run Maven build and tests\r
+
+              mvn clean package\r
+
+              mvn test"
+            shell: powershell
+          name: maven build
+          id: maven_build
