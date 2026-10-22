@@ -1,0 +1,12 @@
+pipeline:
+  stages:
+    - steps:
+        - run:
+            script: "cd SmallestSpringApp \r
+
+              mvn -B clean package \r
+
+              mvn -B test"
+            shell: bash
+          name: maven build
+          id: maven_build
