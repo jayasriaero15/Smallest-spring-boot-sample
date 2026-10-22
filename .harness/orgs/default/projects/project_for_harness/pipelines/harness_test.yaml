@@ -1,8 +1,0 @@
-pipeline:
-  stages:
-    - steps:
-        - run:
-            script: ls -la
-            shell: bash
-          name: maven build
-          id: maven_build
