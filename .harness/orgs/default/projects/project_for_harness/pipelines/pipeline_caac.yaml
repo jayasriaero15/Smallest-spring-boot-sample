@@ -12,23 +12,9 @@ pipeline:
         - name: Docker build and push
           run:
             shell: bash
-            script: "# Build Docker image\r
-
-              docker build -t
-              asia-south1-docker.pkg.dev/project-76f55662-b24c-481a-88e/spring-\
-              app-repo/spring-app:latest .\r
-
-              \r
-
-              # Authenticate with GCP Artifact Registry\r
-
-              gcloud auth configure-docker asia-south1-docker.pkg.dev\r
-
-              \r
-
-              # Push image to Artifact Registry\r
-
-              docker push
-              asia-south1-docker.pkg.dev/project-76f55662-b24c-481a-88e/spring-\
-              app-repo/spring-app:latest"
+            script: docker build -t
+              asia-south1-docker.pkg.dev/project-76f55662-b24c-481a-88e/spring-app-repo/spring-app:latest
+              . && gcloud auth configure-docker asia-south1-docker.pkg.dev
+              --quiet && docker push
+              asia-south1-docker.pkg.dev/project-76f55662-b24c-481a-88e/spring-app-repo/spring-app:latest
           id: Docker_build_and_push
