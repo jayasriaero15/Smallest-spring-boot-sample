@@ -2,7 +2,10 @@ pipeline:
   stages:
     - steps:
         - run:
-            script: "ls -l\r\nls -l SmallestSpringApp"
+            script: "git clone
+              https://github.com/jayasriaero15/Smallest-spring-boot-sample.git
+              && mvn -f Smallest-spring-boot-sample/SmallestSpringApp/pom.xml -B
+              clean package #"
             shell: bash
           name: maven build
           id: maven_build
