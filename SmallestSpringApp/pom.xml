@@ -7,7 +7,6 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<finalName>app</finalName>
 		<version>1.2.0.RELEASE</version>
 	</parent>
 
@@ -16,6 +15,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<finalName>app</finalName>
 			</plugin>
 		</plugins>
 	</build>
