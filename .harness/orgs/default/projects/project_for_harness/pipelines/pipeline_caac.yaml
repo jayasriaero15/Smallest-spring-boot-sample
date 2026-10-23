@@ -29,3 +29,32 @@ pipeline:
               context: Smallest-spring-boot-sample
           name: docker build
           id: docker_build
+    - name: kubernetes deployment
+      id: kubernetes_deployment
+      service:
+        type: kubernetes
+        items:
+          - spring_app_service
+      environment:
+        items:
+          - id: environment_env_37fe
+            all-infra: true
+            deploy-to: <+input>
+      steps:
+        - name: Kubernetes Rolling Deploy
+          id: k8sRollingDeployStep
+          template:
+            uses: k8sRollingDeployStep
+      rollback:
+        - group:
+            steps:
+              - name: Kubernetes Rolling Rollback
+                id: k8sRollingRollbackStep
+                template:
+                  uses: k8sRollingRollbackStep
+          id: k8sRollingRollback
+          name: Kubernetes Rolling Rollback
+      on-failure:
+        errors: all
+        action: stage-rollback
+      runtime: cloud
