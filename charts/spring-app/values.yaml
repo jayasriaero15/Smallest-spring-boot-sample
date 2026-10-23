@@ -1,0 +1,11 @@
+replicaCount: 1
+
+image:
+  repository: asia-south1-docker.pkg.dev/project-76f55662-b24c-481a-88e/spring-app-repo/spring-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+
