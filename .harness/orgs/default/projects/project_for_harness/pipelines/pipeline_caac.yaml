@@ -18,7 +18,7 @@ pipeline:
         - build:
             uses: buildAndPushToGAR
             with:
-              connector: connector_Gcp_cadc
+              connector: connector_Gcp_c109
               host: asia-south1-docker.pkg.dev
               project_id: project-76f55662-b24c-481a-88e
               image_name: spring-app-repo/spring-app
