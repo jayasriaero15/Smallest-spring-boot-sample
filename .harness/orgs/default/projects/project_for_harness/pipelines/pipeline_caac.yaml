@@ -12,13 +12,16 @@ pipeline:
         - name: Docker build and push
           run:
             shell: bash
-            script: cd /harness/Smallest-spring-boot-sample && mvn -f
-              SmallestSpringApp/pom.xml clean package -DskipTests && JAR="$(find
-              SmallestSpringApp/target -maxdepth 1 -type f -name '*.jar' ! -name
-              '*.original' | head -n 1)" && test -n "$JAR" && cp "$JAR" app.jar
-              && docker build -f Dockerfile -t
-              asia-south1-docker.pkg.dev/project-76f55662-b24c-481a-88e/spring-app-repo/spring-app:latest
-              . && gcloud auth configure-docker asia-south1-docker.pkg.dev
-              --quiet && docker push
-              asia-south1-docker.pkg.dev/project-76f55662-b24c-481a-88e/spring-app-repo/spring-app:latest
+            script: |-
+              cd /harness/Smallest-spring-boot-sample && mvn -f SmallestSpringApp/pom.xml clean package -DskipTests && cp SmallestSpringApp/target/app.jar app.jar
           id: Docker_build_and_push
+        - build:
+            uses: buildAndPushToGAR
+            with:
+              connector: connector_Gcp_cadc
+              host: asia-south1-docker.pkg.dev
+              project_id: project-76f55662-b24c-481a-88e
+              image_name: spring-app-repo/spring-app
+              tags:
+                - latest
+              caching: true
