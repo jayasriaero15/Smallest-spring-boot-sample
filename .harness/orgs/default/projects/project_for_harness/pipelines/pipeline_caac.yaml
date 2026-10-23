@@ -25,3 +25,7 @@ pipeline:
               tags:
                 - latest
               caching: true
+              dockerfile: Smallest-spring-boot-sample/Dockerfile
+              context: Smallest-spring-boot-sample
+          name: docker build
+          id: docker_build
