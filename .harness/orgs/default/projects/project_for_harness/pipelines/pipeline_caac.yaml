@@ -38,9 +38,7 @@ pipeline:
       environment:
         items:
           - id: environment_env_37fe
-            all-infra: true
-            deploy-to:
-              - environment_env_37fe
+            deploy-to: infra_gke_cluster
       steps:
         - name: Kubernetes Rolling Deploy
           id: k8sRollingDeployStep
