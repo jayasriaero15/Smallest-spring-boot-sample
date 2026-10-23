@@ -1,0 +1,12 @@
+pipeline:
+  stages:
+    - steps:
+        - run:
+            script: "dos2unix script.sh\r
+
+              cd SmallestSpringApp\r
+
+              mvn clean package"
+            shell: bash
+          name: maven build
+          id: maven_build
