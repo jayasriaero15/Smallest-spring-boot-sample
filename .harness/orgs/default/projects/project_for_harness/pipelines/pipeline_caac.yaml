@@ -12,7 +12,8 @@ pipeline:
         - name: Docker build and push
           run:
             shell: bash
-            script: docker build -t
+            script: pwd && ls -la && test -f Dockerfile && test -f target/app.jar && docker
+              build -f Dockerfile -t
               asia-south1-docker.pkg.dev/project-76f55662-b24c-481a-88e/spring-app-repo/spring-app:latest
               . && gcloud auth configure-docker asia-south1-docker.pkg.dev
               --quiet && docker push
