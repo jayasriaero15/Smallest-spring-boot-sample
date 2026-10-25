@@ -38,7 +38,7 @@ pipeline:
       environment:
         items:
           - id: environment_env_37fe
-            deploy-to: infrastructure_kubernetes_gcp_ac7b
+            deploy-to: infra_gke_direct
       steps:
         - name: Kubernetes Rolling Deploy
           id: k8sRollingDeployStep
@@ -59,4 +59,7 @@ pipeline:
       on-failure:
         errors: all
         action: stage-rollback
-      runtime: cloud
+      runtime:
+        kubernetes:
+          connector: gke_learning_cluster
+          namespace: default
