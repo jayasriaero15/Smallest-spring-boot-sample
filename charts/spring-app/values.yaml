@@ -1,11 +1,22 @@
-replicaCount: 1
+
+replicaCount: 2
 
 image:
   repository: asia-south1-docker.pkg.dev/project-76f55662-b24c-481a-88e/spring-app-repo/spring-app
   tag: latest
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
+
+containerPort: 8080
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   port: 80
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
 
