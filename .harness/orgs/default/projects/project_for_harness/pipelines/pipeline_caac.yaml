@@ -60,5 +60,6 @@ pipeline:
         errors: all
         action: stage-rollback
       runtime:
-        delegate:
-          - harness-delegate
+        kubernetes:
+          connector: gke_learning_cluster
+          namespace: harness-delegate-ng
