@@ -59,7 +59,4 @@ pipeline:
       on-failure:
         errors: all
         action: stage-rollback
-      runtime:
-        kubernetes:
-          connector: gke_learning_cluster
-          namespace: default
+      runtime: cloud
