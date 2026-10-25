@@ -44,9 +44,6 @@ pipeline:
           id: k8sRollingDeployStep
           template:
             uses: k8sRollingDeployStep
-            with:
-              manifests:
-                - ${{runtime.manifestPath}}
       rollback:
         - group:
             steps:
