@@ -59,4 +59,6 @@ pipeline:
       on-failure:
         errors: all
         action: stage-rollback
-      runtime: cloud
+      runtime:
+        delegate:
+          - harness-delegate
